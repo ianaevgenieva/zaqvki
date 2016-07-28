@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script type= "text/javascript" src = "ajax.js"></script>
+</head>
+<body id = "v">
+<button  value ="click" id="btn"></button>
+<p id="txt"></p>
+<div id = "divs"></div>
+</body>
+<script>
+  
+var btn= document.getElementById("btn");
+btn.addEventListener("click",function(){
+		 var result;
+		 setInterval(function() {
+	 Ajax.request("GET","ajax.php",true,function(response){
+		  result = JSON.parse(response);
+		  document.getElementById("txt").innerHTML = result;
+		  document.getElementById("v").style.backgroundColor = result;
+	 });
+		 },2500);
+},false);
+  
+
+
+</script>
+</html>
